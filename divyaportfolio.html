@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Divya | Full-Stack Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-pearl: #fdfbf7;
+      --bg-white: #ffffff;
+      --text-dark: #2c2a27;
+      --text-muted: #6e6a64;
+      --accent-gold: #c5a059;
+      --accent-gold-hover: #b38f4a;
+      --border-color: #eae3d5;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-pearl);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .navbar-brand {
+      font-family: var(--font-heading);
+    }
+
+    /* Luxury Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-pearl);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-gold);
+      border-radius: 4px;
+    }
+
+    /* Navbar Styling */
+    .custom-navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+      color: var(--text-dark) !important;
+      letter-spacing: 2px;
+    }
+
+    .navbar-brand span {
+      color: var(--accent-gold);
+    }
+
+    .nav-link {
+      color: var(--text-dark) !important;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 0.5rem 1.2rem !important;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-gold) !important;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background-color: var(--accent-gold);
+      color: var(--bg-white);
+      border: 1px solid var(--accent-gold);
+      border-radius: 0;
+      padding: 0.75rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    .btn-gold:hover {
+      background-color: var(--accent-gold-hover);
+      border-color: var(--accent-gold-hover);
+      color: var(--bg-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+      background-color: transparent;
+      color: var(--text-dark);
+      border: 1px solid var(--text-dark);
+      border-radius: 0;
+      padding: 0.75rem 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    .btn-outline-gold:hover {
+      background-color: var(--text-dark);
+      color: var(--bg-white);
+      transform: translateY(-2px);
+    }
+
+    /* Sections Shared Styles */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title-wrapper {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background-color: var(--accent-gold);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #fdfbf7 0%, #f5efe4 100%);
+      padding-top: 140px;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 15px 0;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--accent-gold);
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .hero-img {
+      position: relative;
+      z-index: 2;
+      border-radius: 0px;
+      filter: grayscale(15%);
+      transition: all 0.4s ease;
+    }
+
+    .hero-img-wrapper:hover::before {
+      top: 10px;
+      left: 10px;
+    }
+
+    /* Badges & Tech Stack */
+    .tech-badge {
+      background-color: rgba(197, 160, 89, 0.1);
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 0;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin: 4px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .tech-badge:hover {
+      background-color: var(--accent-gold);
+      color: var(--bg-white);
+      border-color: var(--accent-gold);
+    }
+
+    /* Cards (Services & Portfolio) */
+    .premium-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 0;
+      padding: 40px 30px;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .premium-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(197, 160, 89, 0.08);
+      border-color: var(--accent-gold);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 25px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Portfolio Category Tabs */
+    .project-type-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* Metrics Section Custom Styling */
+    .metrics-section {
+      background-color: var(--text-dark);
+      color: var(--bg-pearl);
+      padding: 60px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .metric-number {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #a8a49e;
+      font-weight: 500;
+    }
+
+    /* Custom Luxury Carousel Styling overrides */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 45px;
+      height: 45px;
+      background-color: rgba(44, 42, 39, 0.8);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 15px;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      background-color: var(--accent-gold);
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--text-dark);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin: 0 5px;
+      border: none;
+    }
+
+    .carousel-indicators .active {
+      background-color: var(--accent-gold);
+      width: 24px;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* Luxury Modal Close Button Styling */
+    .btn-close-luxury {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .btn-close-luxury:hover {
+      color: var(--accent-gold);
+    }
+
+    /* Contact Form Styling */
+    .premium-form .form-control {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-color);
+      border-radius: 0;
+      padding: 1rem 0.5rem;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .premium-form .form-control:focus {
+      box-shadow: none;
+      border-bottom: 1px solid var(--accent-gold);
+      background-color: transparent;
+    }
+
+    /* Footer Social Links Styling */
+    .social-links a {
+      color: #a8a49e;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-gold);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--text-dark) !important;
+      color: #a8a49e !important;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      border-top: 1px solid #3d3a35;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top custom-navbar px-3 px-md-5">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-4 fw-bold" href="#">DIVYA<span>.</span></a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav ms-auto text-center mt-3 mt-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-duration="1000">
+          <span class="hero-tagline">Full-Stack Developer</span>
+          <h1 class="hero-title">Crafting Premium Enterprise Solutions</h1>
+
+          <p class="text-muted pe-lg-5 mb-4">
+            Designing and deploying high-tier enterprise solutions. Combining deep technical expertise in .NET and MERN
+            architectures to deliver seamless, client-focused web experiences with a luxury minimalist touch.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+            <a href="#contact" class="btn btn-gold">Initiate Contact</a>
+            <a href="#portfolio" class="btn btn-outline-gold">Explore Projects</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000">
+          <div class="hero-img-wrapper">
+            <img src="Picture/divya.png" alt="Divya Profile" class="img-fluid hero-img"
+              style="width: 320px; height: 400px; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" style="background-color: var(--bg-white);">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 text-center" data-aos="fade-up" data-aos-duration="1000">
+          <div class="hero-img-wrapper">
+            <img src="Picture/divya.png" alt="About Divya" class="img-fluid hero-img"
+              style="width: 280px; height: 360px; object-fit: cover;">
+          </div>
+        </div>
+        <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <span class="text-uppercase tracking-wider fs-6"
+            style="color: var(--accent-gold); letter-spacing: 2px; font-weight:600;">The Profile</span>
+          <h2 class="fw-bold mt-2 mb-4" style="font-size: 2.2rem;">Engineered for Performance. Designed for Luxury.</h2>
+          <p class="text-muted mb-4">
+            I bridge the gap between high-performance back-end business logic and high-end modern front-end user
+            experiences. Whether crafting a real-time responsive e-commerce web deployment or building structural
+            enterprise ERP desktop applications, I prioritize maintainable engineering structures.
+          </p>
+
+          <h5 class="fw-bold mb-3" style="letter-spacing:1px; font-size:1.1rem;">Core Competency Ecosystem</h5>
+          <div class="mb-4">
+            <span class="tech-badge">MERN Stack</span>
+            <span class="tech-badge">ASP.NET Core MVC</span>
+            <span class="tech-badge">Next.js</span>
+            <span class="tech-badge">WebAPI</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">MongoDB Atlas</span>
+            <span class="tech-badge">WinForms Enterprise</span>
+            <span class="tech-badge">Bootstrap 5</span>
+            <span class="tech-badge">jQuery / JavaScript ES6+</span>
+            <span class="tech-badge">Vercel Deployment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="metrics-section text-center"
+    style="background-color: var(--text-dark); border-top: 1px solid #3d3a35; border-bottom: 1px solid #3d3a35; padding: 60px 0;">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+          <div class="metric-number"
+            style="font-family: var(--font-heading); font-size: 3.2rem; font-weight: 600; color: var(--accent-gold); line-height: 1; margin-bottom: 10px;">
+            1+</div>
+          <div class="metric-label"
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #a8a49e; font-weight: 500;">
+            Years Experience</div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+          <div class="metric-number"
+            style="font-family: var(--font-heading); font-size: 3.2rem; font-weight: 600; color: var(--accent-gold); line-height: 1; margin-bottom: 10px;">
+            9+</div>
+          <div class="metric-label"
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #a8a49e; font-weight: 500;">
+            Productions</div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+          <div class="metric-number"
+            style="font-family: var(--font-heading); font-size: 3.2rem; font-weight: 600; color: var(--accent-gold); line-height: 1; margin-bottom: 10px;">
+            6+</div>
+          <div class="metric-label"
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #a8a49e; font-weight: 500;">
+            Enterprises</div>
+        </div>
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+          <div class="metric-number"
+            style="font-family: var(--font-heading); font-size: 3.2rem; font-weight: 600; color: var(--accent-gold); line-height: 1; margin-bottom: 10px;">
+            24/7</div>
+          <div class="metric-label"
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #a8a49e; font-weight: 500;">
+            Deployment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container text-center">
+      <div class="section-title-wrapper" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="section-title">Technical Expertise</h2>
+        <p class="text-muted mt-2">Architectural capabilities customized for enterprise and direct-to-consumer
+          deployment</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <div class="premium-card">
+            <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h4 class="card-title">Full-Stack MERN Architectures</h4>
+            <p class="text-muted small mb-0">
+              Constructing fast, reactive commercial platforms with secure Node.js backends, flexible Mongo collections,
+              and beautiful custom frontends.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <div class="premium-card">
+            <div class="card-icon"><i class="fa-solid fa-gears"></i></div>
+            <h4 class="card-title">Enterprise .NET Development</h4>
+            <p class="text-muted small mb-0">
+              Designing sturdy business workflows, management systems, and ERP structures optimized with clean
+              relational SQL database normalization.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+          <div class="premium-card">
+            <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h4 class="card-title">Client-Level UI/UX Execution</h4>
+            <p class="text-muted small mb-0">
+              Delivering clean, responsive grid systems emphasizing sophisticated palettes like champagne and minimalist
+              typography that conversion-tests highly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" style="background-color: var(--bg-white);">
+    <div class="container text-center">
+      <div class="section-title-wrapper" data-aos="fade-up" data-aos-duration="800">
+        <h2 class="section-title">Selected Productions</h2>
+        <p class="text-muted mt-2">Commercial-grade web systems and desktop platforms designed to exceed client
+          parameters</p>
+      </div>
+
+      <div class="row g-4 text-start">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/delicious_bites_1. (1).png" alt="Delicious Bites Presentation"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">MERN Stack Deployment</span>
+                <h4 class="card-title">Delicious Bites</h4>
+                <p class="text-muted small">
+                  Premium restaurant presentation interface featuring real-time interactive product menus, custom
+                  category filters, and smooth mobile client UI components.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">React</span>
+                <span class="badge bg-light text-dark border">Node.js</span>
+                <span class="badge bg-light text-dark border">MongoDB</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/delicious_bites_1. (1).png,Picture/delicious_bites_1. (2).png,Picture/delicious_bites_1. (3).png,Picture/delicious_bites_1. (4).png,Picture/delicious_bites_1. (5).png"
+                data-title="Delicious Bites" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/TadkaTown_1.png" alt="Tadka Town Preview"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">ASP.NET Core Web</span>
+                <h4 class="card-title">Tadka Town</h4>
+                <p class="text-muted small">
+                  Complete administrative web-based restaurant management platform optimizing business execution
+                  pipelines, transactional records, and custom back-end services.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">.NET Core</span>
+                <span class="badge bg-light text-dark border">MVC</span>
+                <span class="badge bg-light text-dark border">SQL Server</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/TadkaTown_1.png,Picture/TadkaTown_2.png,Picture/TadkaTown_3.png,Picture/TadkaTown_4.png,Picture/TadkaTown_5.png"
+                data-title="Delicious Bites" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/AtoZ_1.png" alt="AtoZ Jewellery Storefront"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">High-End E-Commerce</span>
+                <h4 class="card-title">AtoZ Jewellery</h4>
+                <p class="text-muted small">
+                  Luxury boutique imitation jewelry digital storefront featuring mobile-optimized catalog navigation
+                  arrays tied directly to streamlined WhatsApp conversion action triggers.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">React.js</span>
+                <span class="badge bg-light text-dark border">Luxury UI</span>
+                <span class="badge bg-light text-dark border">WhatsApp API</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/AtoZ_1.png,Picture/AtoZ_2.png,Picture/AtoZ_3.png,Picture/AtoZ_4.png"
+                data-title="AtoZ Jewellery" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/TheSaffronTable_1.png" alt="The Saffron Table ERP"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">Enterprise Desktop</span>
+                <h4 class="card-title">The Saffron Table</h4>
+                <p class="text-muted small">
+                  Heavy-duty native desktop ERP management package built for internal restaurant operations, layout
+                  analytics mapping, and structured high-throughput local database reporting.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">WinForms</span>
+                <span class="badge bg-light text-dark border">C# .NET</span>
+                <span class="badge bg-light text-dark border">SQL Server</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/TheSaffronTable_1.png,Picture/TheSaffronTable_2.png,Picture/TheSaffronTable_3.png,Picture/TheSaffronTable_4.png,Picture/TheSaffronTable_5.png,Picture/TheSaffronTable_6.png,Picture/TheSaffronTable_7.png,Picture/TheSaffronTable_8.png,Picture/TheSaffronTable_9.png"
+                data-title="Delicious Bites" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/forever_1.png" alt="Forever Clothing App"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">MERN Stack Platform</span>
+                <h4 class="card-title">Forever Clothing</h4>
+                <p class="text-muted small">
+                  A responsive online apparel retail platform deploying custom shopping checkout logic architectures,
+                  state preservation, and product collection administration.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">Express.js</span>
+                <span class="badge bg-light text-dark border">React Router</span>
+                <span class="badge bg-light text-dark border">Mongoose</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/forever_1.png,Picture/forever_2.png,Picture/forever_3.png,Picture/forever_4.png"
+                data-title="Forever Clothing" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+          <div class="premium-card d-flex flex-column justify-content-between h-100 p-0 overflow-hidden">
+            <div>
+              <div class="position-relative overflow-hidden mb-4"
+                style="height: 200px; border-bottom: 1px solid var(--border-color);">
+                <img src="Picture/QuickServerMenu_1.png" alt="QuickServeMenu Interface"
+                  class="w-100 h-100 object-fit-cover transition-all" style="transition: transform 0.5s ease;"
+                  onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div class="px-4">
+                <span class="project-type-tag">MERN UI System</span>
+                <h4 class="card-title">QuickServeMenu</h4>
+                <p class="text-muted small">
+                  Dynamic touch-responsive kiosk interface layer crafted explicitly for zero-latency customer
+                  self-ordering workflows and adaptive responsive rendering screens.
+                </p>
+              </div>
+            </div>
+            <div class="mt-3 px-4 pb-4">
+              <div class="mb-3">
+                <span class="badge bg-light text-dark border">Node.js</span>
+                <span class="badge bg-light text-dark border">Kiosk UI</span>
+                <span class="badge bg-light text-dark border">Next.js Ready</span>
+              </div>
+              <button type="button"
+                class="btn p-0 text-dark fw-bold small border-0 bg-transparent text-uppercase tracking-wider preview-btn"
+                data-images="Picture/QuickServerMenu_1.png,Picture/QuickServerMenu_2.png,Picture/QuickServerMenu_3.png,Picture/QuickServerMenu_4.png,Picture/QuickServerMenu_5.png,Picture/QuickServerMenu_6.png,Picture/QuickServerMenu_7.png"
+                data-title="QuickServeMenu" style="font-size: 0.85rem; letter-spacing: 1px;">
+                View project <i class="fa-solid fa-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 text-center mb-5" data-aos="fade-up" data-aos-duration="800">
+          <h2 class="section-title">Let's Collaborate</h2>
+          <p class="text-muted mt-2">Available for high-level commercial project consultancies, architectural
+            deployment, or corporate technical interviews.</p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <form class="premium-form" id="whatsappForm">
+            <div class="mb-4">
+              <input type="text" id="userName" class="form-control" placeholder="YOUR NAME" required>
+            </div>
+            <div class="mb-4">
+              <input type="email" id="userEmail" class="form-control" placeholder="YOUR EMAIL ADDRESS" required>
+            </div>
+            <div class="mb-4">
+              <textarea id="projectDetails" class="form-control" rows="4" placeholder="PROJECT DETAILS OR INQUIRY"
+                required></textarea>
+            </div>
+            <div class="text-center mt-5">
+              <!-- Added type="button" and onclick function -->
+              <button type="button" onclick="sendToWhatsApp()" class="btn btn-gold w-100 py-3">Transmit Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-4 text-white">
+    <div class="container">
+      <div class="mb-3 d-flex justify-content-center gap-4 social-links">
+        <a href="https://github.com/divyalahoti" target="_blank" aria-label="GitHub">
+          <i class="fa-brands fa-github fs-5"></i>
+        </a>
+        <a href="https://linkedin.com/in/divya-lahoti-607836338" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in fs-5"></i>
+        </a>
+      </div>
+
+      <p class="mb-1">&copy; 2026 Divya. All Rights Reserved.</p>
+      <p class="text-uppercase small tracking-widest style-text"
+        style="color: var(--accent-gold); font-size:0.7rem; letter-spacing: 2px;">Full-Stack Engineering &bull; MERN
+        &bull; .NET Enterprise</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      once: true,
+      offset: 120
+    });
+
+    document.querySelectorAll('.preview-btn').forEach(button => {
+      button.addEventListener('click', function () {
+        const imagesAttr = this.getAttribute('data-images');
+        if (!imagesAttr) return;
+
+        const imagesArr = imagesAttr.split(',');
+        const targetingTitle = this.getAttribute('data-title') || 'Project Preview';
+
+        document.getElementById('modalProjectTitle').innerText = targetingTitle;
+
+        const carouselIndicators = document.getElementById('carouselIndicatorsContainer');
+        const carouselInner = document.getElementById('carouselInnerContainer');
+
+        carouselIndicators.innerHTML = '';
+        carouselInner.innerHTML = '';
+
+        imagesArr.forEach((imgSrc, index) => {
+          const trimmedSrc = imgSrc.trim();
+          if (!trimmedSrc) return;
+
+          const isActive = index === 0 ? 'active' : '';
+
+          carouselIndicators.innerHTML += `
+          <button type="button" data-bs-target="#projectPreviewCarousel" data-bs-slide-to="${index}" class="${isActive}" aria-current="${index === 0}" aria-label="Slide ${index + 1}"></button>
+        `;
+
+          carouselInner.innerHTML += `
+          <div class="carousel-item ${isActive}">
+            <img src="${trimmedSrc}" alt="${targetingTitle} View ${index + 1}" class="img-fluid border w-100" style="border-color: var(--border-color) !important; max-height: 85vh; object-fit: contain;">
+          </div>
+        `;
+        });
+
+        const controls = document.querySelectorAll('.carousel-control-custom');
+        if (imagesArr.length <= 1) {
+          controls.forEach(control => control.style.display = 'none');
+          carouselIndicators.style.display = 'none';
+        } else {
+          controls.forEach(control => control.style.display = 'flex');
+          carouselIndicators.style.display = 'flex';
+        }
+
+        const designInstance = new bootstrap.Modal(document.getElementById('projectPreviewModal'));
+        designInstance.show();
+      });
+    });
+
+    function sendToWhatsApp() {
+      // Replace with your actual WhatsApp phone number
+      const phoneNumber = "919428380108";
+
+      const name = document.getElementById('userName').value;
+      const email = document.getElementById('userEmail').value;
+      const details = document.getElementById('projectDetails').value;
+
+      if (!name || !email || !details) {
+        alert("Please fill in all fields before transmitting.");
+        return;
+      }
+
+      const message = `*Collaboration Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Details:* ${details}`;
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      window.open(whatsappUrl, '_blank').focus();
+    }
+  </script>
+
+</body>
+
+</html>

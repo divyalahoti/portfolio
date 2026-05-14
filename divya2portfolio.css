@@ -1,0 +1,197 @@
+/* ================= GLOBAL ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* body {
+  background: #f8f9fa;
+  color: #333;
+  line-height: 1.7;
+} */
+
+body {
+  background: #f9fafb;
+  color: #1f2937;
+  line-height: 1.8;
+}
+
+
+/* ================= NAVBAR ================= */
+.navbar {
+  background: rgba(255,255,255,0.95) !important;
+  backdrop-filter: blur(8px);
+}
+.navbar {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}   
+
+.navbar-brand {
+  color: #2563eb !important;
+}
+/* .navbar-brand {
+  letter-spacing: 1px;
+} */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #2563eb;
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+
+/* ================= HERO ================= */
+.hero-section {
+  background: linear-gradient(120deg, #f8fbff, #eef2ff);
+}
+
+.hero-section p {
+  max-width: 500px;
+}
+
+.btn-primary {
+  background: #2563eb;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-outline-primary {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.btn-outline-primary:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+#about ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#about ul li {
+  margin-bottom: 8px;
+}
+
+#about li::before {
+  content: "✔";
+  color: #2563eb;
+  margin-right: 8px;
+}
+
+/* ================= SECTION ================= */
+.section {
+  padding: 80px 0;
+}
+
+/* ================= SERVICES ================= */
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.service-card i {
+  background: #eef2ff;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+
+/* ================= SKILLS ================= */
+#skills .col-md-3 {
+  background: #ffffff;
+  margin: 8px;
+  padding: 12px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+#experience .card {
+  border-left: 5px solid #2563eb;
+  background: #ffffff;
+}
+
+.service-card i {
+  background: #eef2ff;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+
+
+/* ================= PORTFOLIO ================= */
+.portfolio-card {
+  background: #ffffff;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+.portfolio-card h5 {
+  color: #2563eb;
+}
+
+.portfolio-card p {
+  font-size: 14px;
+}
+
+.portfolio-card:hover {
+  border-top: 4px solid #2563eb;
+}
+
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* ================= EXPERIENCE ================= */
+#experience .card {
+  border-radius: 12px;
+}
+
+/* ================= CONTACT ================= */
+form .form-control {
+  border: 1px solid #e5e7eb;
+}
+
+form .form-control:focus {
+  border-color: #2563eb;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+  background: #1f2937 !important;
+  font-size: 13px;
+}
+
